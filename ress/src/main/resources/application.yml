@@ -1,0 +1,28 @@
+#配置数据库连接
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.88.128/wecat?characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+
+#配置jpa
+  jpa:
+#    hibernate:
+#      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+
+server:
+  servlet:
+    context-path: /sell   #配置前缀
+
+
+##配置logging
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+#  file: D:\ideaproject\log\ress.logs
+
