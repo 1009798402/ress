@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * ProductCategory表跟数据库交互
+ * 商品类目表的Repository
  *
  * @author c
  * @date 2016/10/31
  */
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Integer> {
+
     /**
      * 根据1个或者多个type查询类目
      *
@@ -19,4 +20,12 @@ public interface ProductCategoryRepository extends JpaRepository<ProductCategory
      * @return List<ProductCategory>
      */
     List<ProductCategory> findByCategoryTypeIn(List<Integer> types);
+
+    /**
+     * 等于findById
+     *
+     * @param primaryId 主键Id
+     * @return OrderDetail
+     */
+    ProductCategory findByCategoryId(Integer primaryId);
 }

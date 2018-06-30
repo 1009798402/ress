@@ -17,7 +17,7 @@ public interface ProductCategoryService {
      * @param categoryId 类目id
      * @return ProductCategory
      */
-    ProductCategory getOne(Integer categoryId);
+    ProductCategory findOne(Integer categoryId);
 
     /**
      * 查询所有类目

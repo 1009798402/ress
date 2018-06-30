@@ -12,26 +12,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * 对应数据库product_category表
+ * 类目表
  *
  * @author C
  * @date 2016/10/31
  */
+@Data
 @Entity
 @DynamicUpdate
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductCategory {
-    /** 类目id.*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoryId;
 
-    /** 类目名字.*/
+    /** 类目名字. */
     private String categoryName;
 
-    /** 类目编号.*/
+    /** 类目编号. */
     private Integer categoryType;
 }
 

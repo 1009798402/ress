@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 描述:
+ * 描述:商品Vo
  *
  * @author C
  * @date 20:21 2018/6/29/029

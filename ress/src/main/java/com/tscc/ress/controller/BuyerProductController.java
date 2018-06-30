@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -35,23 +33,24 @@ public class BuyerProductController {
 
     @RequestMapping("/list")
     public ResultVo showProductList() {
-        //1.查询所有上架中的商品  数据库查询
+
+        //1. 查询所有上架中的商品  数据库查询
         List<ProductInfo> productInfos = productInfoService.findOnLine();
 
-        //2.查询出上架商品所对应的类型
-        //lambda写法
+        //2. 查询出上架商品所对应的类型
+        //lambda写法(也可以用循环取)
         List<Integer> types = productInfos.stream().map(e -> e.getCategoryType()).collect(Collectors.toList());
 
-        //3.根据类型查找对应的类目  数据库查询
+        //3. 根据类型查找对应的类目  数据库查询
         List<ProductCategory> categorys = categoryService.findByCategoryTypeIn(types);
 
-        //4.数据拼装
+        //4. 数据拼装
         List<ProductVo> data = new ArrayList<>();
 
-        //5.循环生成每个productVo
+        //5. 循环生成每个productVo
         for (ProductCategory category : categorys) {
             ProductVo productVo = new ProductVo();
-            //5.1填充productVo中的字段
+            //5.1 填充productVo中的字段
             productVo.setCategoryName(category.getCategoryName());
             productVo.setCategoryType(category.getCategoryType());
 
@@ -65,11 +64,11 @@ public class BuyerProductController {
                 }
             }
             productVo.setProductInfoVos(list);
-            //5.2添加resultVo中的返回数据字段
+            //5.2 添加resultVo中的返回数据字段
             data.add(productVo);
         }
 
-        //6.返回结果对象
+        //6. 返回结果对象
         return SellResult.success(data);
     }
 }

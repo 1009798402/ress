@@ -8,13 +8,15 @@ import lombok.*;
  * @author C
  * @date 18:06 2018/6/29/029
  */
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 public enum ProductStatusEnum {
-    /** 在架*/
-    ONLINE(0),
-    /** 下架*/
-    DOWN(1)
+    /** 0表示在架. */
+    ONLINE(0,"在架"),
+
+    /** 1表示下架. */
+    DOWN(1,"下架"),
     ;
     private Integer code;
+    private String msg;
 }

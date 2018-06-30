@@ -26,7 +26,7 @@ public class ProductCategoryServiceImplTest {
     private ProductCategoryServiceImpl service;
     @Test
     public void findOnd() {
-        ProductCategory category = service.getOne(1);
+        ProductCategory category = service.findOne(1);
         Assert.assertNotNull(category);
     }
 

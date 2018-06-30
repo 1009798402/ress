@@ -3,7 +3,7 @@ package com.tscc.ress.vo;
 import lombok.Data;
 
 /**
- * 描述: 用来返回结果的vo
+ * 描述: 用来返回给前端结果的vo
  *
  * @author C
  * @date 19:58 2018/6/29
