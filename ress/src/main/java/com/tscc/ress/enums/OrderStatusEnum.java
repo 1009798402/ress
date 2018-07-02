@@ -11,16 +11,16 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements CodeEnum{
 
     /** 0表示新订单. */
     NEW(0,"新订单"),
 
     /** 1表示完结订单的状态. */
-    FINISHED(1,"完结订单的状态"),
+    FINISHED(1,"已完结"),
 
     /** 2表示取消订单的状态. */
-    CANCEL(2,"取消订单的状态"),
+    CANCEL(2,"已取消"),
     ;
     private Integer code;
     private String msg;

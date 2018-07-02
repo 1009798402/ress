@@ -11,6 +11,7 @@ import com.tscc.ress.dto.OrderDto;
  * Time: 10:27
  */
 public interface BuyerService {
+
     /**
      * 查询一个订单的方法
      *
@@ -19,6 +20,7 @@ public interface BuyerService {
      * @return OrderDto 查询到的那个dto对象
      */
     OrderDto findOneOrder(String openId,String orderId);
+
     /**
      * 取消订单的方法
      *

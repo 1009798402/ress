@@ -158,10 +158,11 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         ).collect(Collectors.toList());
 
         productInfoService.increaseProductDescription(cartDtoList);
+        //TODO
         //如果已付款,退款
-        if (orderDto.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
+        /*if (orderDto.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
             payService.refund(orderDto);
-        }
+        }*/
         return orderDto;
     }
 
@@ -172,6 +173,10 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         if (!OrderStatusEnum.NEW.getCode().equals(orderDto.getOrderStatus())) {
             log.error("【完结订单】 订单状态不正确 , orderId = {}, orderStatus = {}", orderDto.getOrderId(), orderDto.getOrderStatus());
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
+        }
+        if (PayStatusEnum.WAIT.getCode().equals(orderDto.getPayStatus())){
+            log.error("【完结订单】 还未支付订单,无法完结订单 , orderId = {}, payStatus = {}", orderDto.getOrderId(), orderDto.getPayStatus());
+            throw new SellException(ResultEnum.PAY_STATUS_ERROR);
         }
         //修改dto订单状态
         orderDto.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
@@ -211,5 +216,13 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         }
 
         return orderDto;
+    }
+
+    @Override
+    public Page<OrderDto> findAll(Pageable pageable) {
+        Page<OrderMaster> orderMasters = orderMasterRepository.findAll(pageable);
+        List<OrderDto> orderDtoList = OrderMaster2OrderDtoConverter.convert(orderMasters.getContent());
+        //再转换成Page<OrderDto>
+        return new PageImpl<>(orderDtoList, pageable, orderMasters.getTotalElements());
     }
 }

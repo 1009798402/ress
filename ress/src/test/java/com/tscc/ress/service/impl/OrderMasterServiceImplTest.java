@@ -27,7 +27,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class OrderMasterServerImplTest {
+public class OrderMasterServiceImplTest {
     @Autowired
     private OrderMasterServiceImpl orderMasterServer;
 
@@ -69,10 +69,9 @@ public class OrderMasterServerImplTest {
     @Test
     public void testFindAll() {
         PageRequest page = new PageRequest(0,5);
-        Page<OrderDto> orderDtos = orderMasterServer.findAll(BUYER_OPENID, page);
+        Page<OrderDto> orderDtos = orderMasterServer.findAll(page);
         log.info("【查到所有订单并且分页】 result = {}",orderDtos);
-
-        Assert.assertNotEquals(0,orderDtos.getTotalElements());
+        Assert.assertTrue("查询所有订单",orderDtos.getTotalElements() > 0 );
     }
 
     @Test

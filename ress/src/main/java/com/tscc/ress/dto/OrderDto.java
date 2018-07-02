@@ -1,7 +1,11 @@
 package com.tscc.ress.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.tscc.ress.database.OrderDetail;
+import com.tscc.ress.enums.OrderStatusEnum;
+import com.tscc.ress.enums.PayStatusEnum;
+import com.tscc.ress.utils.EnumUtil;
 import com.tscc.ress.utils.serializer.Date2LongSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -56,5 +60,15 @@ public class OrderDto {
     private Date updateTime;
 
     /** 订单对应的商品详情. */
-    List<OrderDetail> orderDetails;
+    private List<OrderDetail> orderDetails;
+
+    /** 根据枚举code获取枚举. */
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 }

@@ -30,7 +30,7 @@ public interface OrderMasterService {
     OrderDto findOne(String orderId);
 
     /**
-     * 查询订单列表的方法
+     * 查询一个订单列表的方法
      *
      * @param buyerOpenid 买家的微信Openid
      * @param pageable 分页对象
@@ -61,4 +61,12 @@ public interface OrderMasterService {
      * @return OrderDto 支付完成的那个订单Dto
      */
     OrderDto paid(OrderDto orderDto);
+
+    /**
+     * 查询所有订单列表的方法
+     *
+     * @param pageable 分页对象
+     * @return Page<OrderDto> 分页结果
+     */
+    Page<OrderDto> findAll(Pageable pageable);
 }

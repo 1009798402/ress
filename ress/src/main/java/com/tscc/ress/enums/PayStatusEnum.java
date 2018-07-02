@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum  PayStatusEnum {
+public enum  PayStatusEnum implements CodeEnum{
 
     /** 0表示等待支付. */
     WAIT(0,"等待支付"),

@@ -57,9 +57,10 @@ public class PayController {
     }
 
     /**
+     * 完结订单
      * 接收微信异步支付成功通知  修改状态码
      * @param notifyData 微信异步通知的内容
-     * @return 返回pay.html 的freemarker模板
+     * @return 返回pay.html 的freemarker模板 ftl
      */
     @PostMapping("/notify")
     public ModelAndView notify(@RequestParam ("notifyData") String notifyData){
