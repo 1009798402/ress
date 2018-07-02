@@ -17,17 +17,17 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster,String>
     /**
      * 按照买家的Openid来查询
      *
-     * @param buyerOpendi 买家的Openid
-     * @param pageable
+     * @param openid 买家的Openid
+     * @param page
      * @return Page<OrderMaster> 返回一个Page对象
      */
-    Page<OrderMaster> findByBuyerOpenid(String buyerOpendi, Pageable pageable);
+    Page<OrderMaster> findByBuyerOpenid(String openid, Pageable page);
 
     /**
      * 等于findById
      *
-     * @param primaryId 主键Id
+     * @param orderId 主键Id
      * @return OrderDetail
      */
-    OrderMaster findByOrderId(String primaryId);
+    OrderMaster findByOrderId(String orderId);
 }

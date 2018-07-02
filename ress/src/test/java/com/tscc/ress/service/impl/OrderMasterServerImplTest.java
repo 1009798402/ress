@@ -4,9 +4,7 @@ import com.tscc.ress.database.OrderDetail;
 import com.tscc.ress.dto.OrderDto;
 import com.tscc.ress.enums.OrderStatusEnum;
 import com.tscc.ress.enums.PayStatusEnum;
-import com.tscc.ress.enums.ResultEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.criterion.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * 描述:OrderMasterServerImpl的测试类
@@ -33,7 +29,7 @@ import static org.junit.Assert.*;
 @Slf4j
 public class OrderMasterServerImplTest {
     @Autowired
-    private OrderMasterServerImpl orderMasterServer;
+    private OrderMasterServiceImpl orderMasterServer;
 
     private final String BUYER_OPENID = "1qq2r3";
 

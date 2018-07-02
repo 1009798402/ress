@@ -20,6 +20,11 @@ public enum ResultEnum {
     /** 2表示格式转换错误. */
     CONVERTER_ERROR(2, "格式转换错误"),
 
+    /** 3表示openid不相同. */
+    OPENID_NOT_EQUAL(3,"openid不相同"),
+
+    /** 订单支付价格与订单价格不一致. */
+    ORDER_AMOUNT_NOT_EQUAL(4,"订单支付价格与订单价格不一致"),
     /** 10表示商品不存在. */
     PRODUCT_NOT_EXIST(10, "商品不存在"),
 
@@ -49,6 +54,9 @@ public enum ResultEnum {
 
     /** 19表示openid不能为空*/
     OPENID_NOT_EMPTY(19,"openid不能为空"),
+
+    /** 20表示微信公众号账号方面错误*/
+    WECHAT_MP_ERROR(20,"微信公众号账号方面错误"),
     ;
     private Integer code;
     private String msg;

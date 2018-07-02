@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Demo class
+ * ProductCategoryService的实现类
  *
  * @author keriezhang
  * @date 2016/10/31
@@ -20,8 +20,8 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryRepository repository;
     @Override
-    public ProductCategory getOne(Integer categoryId) {
-        return repository.getOne(categoryId);
+    public ProductCategory findOne(Integer categoryId) {
+        return repository.findByCategoryId(categoryId);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.tscc.ress.dao;
 
 import com.tscc.ress.database.ProductInfo;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,7 @@ public class ProductInfoRepositoryTest {
     }
     @Test
     public void testFindByProductStatus(){
-        List<ProductInfo> byProductStatus = repository.findByProductStatus(1);
-        for (ProductInfo productStatus : byProductStatus) {
-            System.out.println(productStatus);
-        }
+        List<ProductInfo> byProductStatus = repository.findByProductStatus(0);
+        Assert.assertNotEquals(0,byProductStatus.size());
     }
 }

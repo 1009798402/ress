@@ -11,6 +11,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 public enum ProductStatusEnum {
+
     /** 0表示在架. */
     ONLINE(0,"在架"),
 

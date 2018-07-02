@@ -3,7 +3,7 @@ package com.tscc.ress.exception;
 import com.tscc.ress.enums.ResultEnum;
 
 /**
- * 描述:Sell中的异常
+ * 描述:Sell中的异常(自定义)
  *
  * @author C
  * Date: 2018-06-30

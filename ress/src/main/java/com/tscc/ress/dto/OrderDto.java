@@ -1,6 +1,5 @@
 package com.tscc.ress.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.tscc.ress.database.OrderDetail;
 import com.tscc.ress.utils.serializer.Date2LongSerializer;

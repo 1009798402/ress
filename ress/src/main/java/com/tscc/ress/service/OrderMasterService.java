@@ -5,13 +5,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * 描述:
+ * 描述:订单相关操作Service层
  *
  * @author C
  * Date: 2018-06-30
  * Time: 10:51
  */
-public interface OrderMasterServer {
+public interface OrderMasterService {
 
     /**
      * 新增一个订单的方法

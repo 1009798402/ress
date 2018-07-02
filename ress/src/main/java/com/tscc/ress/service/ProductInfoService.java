@@ -1,6 +1,5 @@
 package com.tscc.ress.service;
 
-import com.tscc.ress.database.ProductCategory;
 import com.tscc.ress.database.ProductInfo;
 import com.tscc.ress.dto.CartDto;
 import org.springframework.data.domain.Page;

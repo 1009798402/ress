@@ -5,7 +5,8 @@ import com.tscc.ress.dto.OrderDto;
 import com.tscc.ress.enums.ResultEnum;
 import com.tscc.ress.exception.SellException;
 import com.tscc.ress.form.OrderForm;
-import com.tscc.ress.service.OrderMasterServer;
+import com.tscc.ress.service.BuyerService;
+import com.tscc.ress.service.OrderMasterService;
 import com.tscc.ress.utils.SellResult;
 import com.tscc.ress.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 描述:
+ * 描述:订单表现层
  *
  * @author C
  * Date: 2018-06-30
@@ -35,7 +36,9 @@ import java.util.Map;
 public class BuyerOrderController {
 
     @Autowired
-    private OrderMasterServer orderMasterServer;
+    private OrderMasterService orderMasterServer;
+    @Autowired
+    private BuyerService buyerServer;
 
     /**
      * 创建订单
@@ -44,7 +47,7 @@ public class BuyerOrderController {
      * @return Map<orderId,String>  key"orderId": "147283992738221"
      */
     @PostMapping("/create")
-    public ResultVo<Map<String,String>> create(@Valid OrderForm orderForm, BindingResult bindingResult){
+    public ResultVo create(@Valid OrderForm orderForm, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()){
             log.error("【创建订单】 参数不正确, orderForm = {}",orderForm);
@@ -71,20 +74,44 @@ public class BuyerOrderController {
      * @return Page<OrderDto> 返回分页后的orderDto对象
      */
     @GetMapping("/list")
-    public ResultVo<List<OrderDto>> list(@RequestParam("openid") String openid,
+    public ResultVo list(@RequestParam("openid") String openid,
                                          @RequestParam(value = "page",defaultValue = "0") Integer page,
                                          @RequestParam(value = "size",defaultValue = "10") Integer size){
+
         if (StringUtils.isEmpty(openid)){
             log.error("【查询所有订单】 openid不能为空 , openid = {}" , openid);
             throw new SellException(ResultEnum.OPENID_NOT_EMPTY);
         }
         PageRequest pageRequest = new PageRequest(page,size);
         Page<OrderDto> orderDtoPage = orderMasterServer.findAll(openid, pageRequest);
-
-        return SellResult.success(orderDtoPage.getContent());
+        List<OrderDto> content = orderDtoPage.getContent();
+        return SellResult.success(content);
     }
 
-    //订单详情
+    /**
+     * 查看订单详情
+     * @param openid 微信的Openid
+     * @param orderId 订单号
+     * @return ResultVo<OrderDto> 查询到的OrderDto对象
+     */
+    @GetMapping("/detail")
+    public ResultVo detail(String openid,String orderId){
 
-    //取消订单
+        OrderDto result = buyerServer.findOneOrder(openid, orderId);
+        return SellResult.success(result);
+    }
+
+    /**
+     * 取消订单
+     * @param openid 微信的Openid
+     * @param orderId 订单号
+     * @return ResultVo 返回结果
+     */
+    @PostMapping("/cancel")
+    public ResultVo cancel(@RequestParam("openid") String openid,
+                           @RequestParam("orderId") String orderId){
+
+        buyerServer.cancelOrder(openid, orderId);
+        return SellResult.success();
+    }
 }

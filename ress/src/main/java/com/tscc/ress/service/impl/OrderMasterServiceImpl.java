@@ -12,7 +12,8 @@ import com.tscc.ress.enums.OrderStatusEnum;
 import com.tscc.ress.enums.PayStatusEnum;
 import com.tscc.ress.enums.ResultEnum;
 import com.tscc.ress.exception.SellException;
-import com.tscc.ress.service.OrderMasterServer;
+import com.tscc.ress.service.OrderMasterService;
+import com.tscc.ress.service.PayService;
 import com.tscc.ress.service.ProductInfoService;
 import com.tscc.ress.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +25,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 描述:OrderMasterServer的实现类
+ * 描述:OrderMasterServer的实现类 方法描述见接口
  *
  * @author C
  * Date: 2018-06-30
@@ -38,7 +40,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-public class OrderMasterServerImpl implements OrderMasterServer {
+public class OrderMasterServiceImpl implements OrderMasterService {
 
     @Autowired
     private ProductInfoService productInfoService;
@@ -46,6 +48,8 @@ public class OrderMasterServerImpl implements OrderMasterServer {
     private OrderMasterRepository orderMasterRepository;
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -113,9 +117,13 @@ public class OrderMasterServerImpl implements OrderMasterServer {
     }
 
     @Override
-    public Page<OrderDto> findAll(String buyerOpenid, Pageable pageable) {
+    public Page<OrderDto> findAll(String openid, Pageable pageable) {
 
-        Page<OrderMaster> orderMasters = orderMasterRepository.findByBuyerOpenid(buyerOpenid, pageable);
+        if (StringUtils.isEmpty(openid)){
+            log.error("【查询所有订单】 openid不能为空 , openid = {}" , openid);
+            throw new SellException(ResultEnum.OPENID_NOT_EMPTY);
+        }
+        Page<OrderMaster> orderMasters = orderMasterRepository.findByBuyerOpenid(openid, pageable);
         //转换成List<OrderDto>
         List<OrderDto> orderDtoList = OrderMaster2OrderDtoConverter.convert(orderMasters.getContent());
         //再转换成Page<OrderDto>
@@ -152,7 +160,7 @@ public class OrderMasterServerImpl implements OrderMasterServer {
         productInfoService.increaseProductDescription(cartDtoList);
         //如果已付款,退款
         if (orderDto.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-            //TODO
+            payService.refund(orderDto);
         }
         return orderDto;
     }

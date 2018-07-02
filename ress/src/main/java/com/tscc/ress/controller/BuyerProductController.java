@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 描述:
+ * 描述:买家相关Controller
  *
  * @author C
  * @date 20:03 2018/6/29/029
@@ -31,6 +31,10 @@ public class BuyerProductController {
     @Autowired
     private ProductCategoryService categoryService;
 
+    /**
+     * 查看商品列表的方法
+     * @return ResultVo 返回结果
+     */
     @RequestMapping("/list")
     public ResultVo showProductList() {
 

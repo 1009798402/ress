@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 描述:购物车Dto
+ * 描述:传递购物车相关数据
  *
  * @author C
  * Date: 2018-06-30

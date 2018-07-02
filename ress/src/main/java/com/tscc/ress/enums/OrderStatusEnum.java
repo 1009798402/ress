@@ -12,6 +12,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum OrderStatusEnum {
+
     /** 0表示新订单. */
     NEW(0,"新订单"),
 

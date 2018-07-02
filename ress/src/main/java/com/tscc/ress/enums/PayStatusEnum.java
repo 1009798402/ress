@@ -12,6 +12,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum  PayStatusEnum {
+
     /** 0表示等待支付. */
     WAIT(0,"等待支付"),
 

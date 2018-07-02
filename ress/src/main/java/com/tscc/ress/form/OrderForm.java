@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * 描述:用来进行Order表单验证
+ * 描述:用来进行订单表单验证
  *
  * @author C
  * Date: 2018-06-30

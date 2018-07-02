@@ -3,6 +3,7 @@ package com.tscc.ress.utils;
 import java.util.Random;
 
 /**
+ * 生成随机数的工具类
  * 2017-06-11 19:12
  */
 public class KeyUtil {

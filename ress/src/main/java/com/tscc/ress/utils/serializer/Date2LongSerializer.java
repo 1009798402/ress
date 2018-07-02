@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * 描述:Date格式转成Long
+ * 描述:Date格式转成Long的工具类
  *
  * @author C
  * Date: 2018-06-30

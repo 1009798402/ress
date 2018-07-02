@@ -8,19 +8,21 @@ spring:
 
 #配置jpa
   jpa:
+    show-sql: true
 #    hibernate:
 #      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        enable_lazy_load_no_trans: true
+#    properties:
+#      hibernate:
+#        enable_lazy_load_no_trans: true
+
 #配置jackson 相当于全局@JsonInclude(JsonInclude.Include.NON_NULL)
   jackson:
     default-property-inclusion: non_null
+
+#配置访问前缀
 server:
   servlet:
-    context-path: /sell   #配置前缀
-
+    context-path: /sell
 
 ##配置logging
 #logging:
@@ -28,3 +30,11 @@ server:
 #    console: "%d - %msg%n"
 #  file: D:\ideaproject\log\ress.logs
 
+#配置微信相关
+wechat:
+  mpAppId: wx036b4158120b15c1
+  mpAppSecret: 480ca4b55c86310af4bf3b3b34f9ecb5
+  mchId: 1409146202
+  mchKey: 06C56A89949D617xxxxxxxxxxx
+  keyPath: /var/weixin_cert/h5.p12                  #微信key文件路径
+  notifyUrl: http://tscc.natapp1.cc/sell/pay/notify #异步通知的地址

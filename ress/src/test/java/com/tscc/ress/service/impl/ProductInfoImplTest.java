@@ -24,7 +24,7 @@ import java.util.List;
 @SpringBootTest
 public class ProductInfoImplTest {
     @Autowired
-    private ProductInfoImpl service;
+    private ProductInfoServiceImpl service;
 
     @Test
     public void findOne() {
