@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +38,7 @@ public class SellerController {
      * @param size 每页显示条数
      * @return list.ftl 的freemarker模板
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public ModelAndView showList(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                  @RequestParam(value = "size", defaultValue = "5") Integer size,
                                  Map<String, Object> map) {
@@ -56,7 +57,7 @@ public class SellerController {
      * @param orderId 订单号
      * @return cancel.ftl 的freemarker模板
      */
-    @RequestMapping("/cancel")
+    @GetMapping("/cancel")
     public ModelAndView cancelOrder(@RequestParam("orderId") String orderId,
                                     Map<String, Object> map) {
 
@@ -80,7 +81,7 @@ public class SellerController {
      * @param orderId 订单号
      * @return detail.ftl
      */
-    @RequestMapping("/detail")
+    @GetMapping("/detail")
     public ModelAndView detail(@RequestParam("orderId") String orderId,
                                Map<String, Object> map) {
         try {
@@ -99,9 +100,9 @@ public class SellerController {
      * 完结订单
      *
      * @param orderId 订单号
-     * @return detail.ftl
+     * @return success.ftl
      */
-    @RequestMapping("/finish")
+    @GetMapping("/finish")
     public ModelAndView finish(@RequestParam("orderId") String orderId,
                                Map<String, Object> map) {
         try {
@@ -117,4 +118,6 @@ public class SellerController {
         map.put("url", "http://sell.com/sell/seller/order/list");
         return new ModelAndView("/common/success");
     }
+
+
 }

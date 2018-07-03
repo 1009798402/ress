@@ -30,7 +30,7 @@ public interface OrderMasterService {
     OrderDto findOne(String orderId);
 
     /**
-     * 查询一个订单列表的方法
+     * 查询某个买家订单列表的方法
      *
      * @param buyerOpenid 买家的微信Openid
      * @param pageable 分页对象

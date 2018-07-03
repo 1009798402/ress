@@ -1,5 +1,8 @@
 package com.tscc.ress.database;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tscc.ress.enums.ProductStatusEnum;
+import com.tscc.ress.utils.EnumUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 描述:商品表
@@ -18,8 +22,6 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @DynamicUpdate
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProductInfo {
 
     @Id
@@ -45,4 +47,16 @@ public class ProductInfo {
 
     /** 类目编号. */
     private Integer categoryType;
+
+    /** 创建时间. */
+    private Date createTime;
+
+    /** 修改时间. */
+    private Date updateTime;
+
+    /** 商品状态枚举. */
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum(){
+        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
+    }
 }

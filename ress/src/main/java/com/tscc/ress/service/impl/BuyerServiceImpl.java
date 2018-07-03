@@ -7,6 +7,7 @@ import com.tscc.ress.service.BuyerService;
 import com.tscc.ress.service.OrderMasterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 /**
@@ -17,7 +18,7 @@ import org.springframework.util.StringUtils;
  * Time: 10:31
  */
 @Slf4j
-@org.springframework.stereotype.Service
+@Service
 public class BuyerServiceImpl implements BuyerService {
     @Autowired
     private OrderMasterService orderMasterServer;

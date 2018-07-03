@@ -63,6 +63,33 @@ public enum ResultEnum {
 
     /** 22表示商品完结成功*/
     ORDER_FINISH_SUCCESS(21,"订单完结成功"),
+
+    /** 23表示商品状态不正确. */
+    PRODUCT_STATUS_ERROR(23, "订单状态不正确"),
+
+    /** 24表示商品上架成功*/
+    PRODUCT_ONSALE_SUCCESS(24,"商品上架成功"),
+
+    /** 25表示商品下架成功*/
+    PRODUCT_OFFSALE_SUCCESS(25,"商品下架成功"),
+
+    /** 26表示商品跟新成功*/
+    PRODUCT_UPDATE_SUCCESS(26,"商品跟新成功"),
+
+    /** 27表示类目跟新成功*/
+    CATEGORY_UPDATE_SUCCESS(27,"类目跟新成功"),
+
+    /** 28表示类目type已存在*/
+    CATEGORY_TYPEORNAME_EXIST(28,"类目type或者名字已存在"),
+
+    /** 29表示商品删除成功*/
+    PRODUCT_DELETE_SUCCESS(29,"商品删除成功"),
+
+    /** 30表示类目删除成功*/
+    CATEGORY_DELETE_SUCCESS(30,"类目删除成功"),
+
+    /** 31表示该类目下还有商品不能删除*/
+    CATEGORY_CANNOT_DELETE(31,"类目下还有商品不能删除"),
     ;
     private Integer code;
     private String msg;

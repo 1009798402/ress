@@ -45,8 +45,13 @@ public class ProductCategoryServiceImplTest {
 
     @Test
     public void save() {
-        ProductCategory productCategory = new ProductCategory(3,"花花",22);
+        ProductCategory productCategory = new ProductCategory();
         ProductCategory save = service.save(productCategory);
         Assert.assertNotNull(save);
+    }
+
+    @Test
+    public void del() {
+        service.delete(13);
     }
 }

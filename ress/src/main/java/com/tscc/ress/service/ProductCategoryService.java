@@ -11,6 +11,7 @@ import java.util.List;
  * @date 2016/10/31
  */
 public interface ProductCategoryService {
+
     /**
      * 查询一个类目
      *
@@ -42,4 +43,17 @@ public interface ProductCategoryService {
      */
     ProductCategory save(ProductCategory productCategory);
 
+    /**
+     * 删除类目的方法
+     *
+     * @param categoryId 类目Id
+     * @return ProductCategory
+     */
+    void delete(Integer categoryId);
+
+    /**
+     * 判断数据库中是否有categoryType categoryName
+     *
+     */
+    Boolean isExistCategoryType(Integer categoryType,String categoryName);
 }

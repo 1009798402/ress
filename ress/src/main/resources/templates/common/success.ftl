@@ -12,7 +12,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                     成功
-                </h4> <strong> 成功信息:${msg}</strong><br><br>
+                </h4> <strong> 成功信息:${msg !""}</strong><br><br>
                 <a href="${url}"
                    class="alert-link">3s后自动跳转
                 </a>

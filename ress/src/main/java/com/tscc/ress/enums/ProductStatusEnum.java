@@ -10,7 +10,7 @@ import lombok.*;
  */
 @Getter
 @AllArgsConstructor
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum{
 
     /** 0表示在架. */
     ONLINE(0,"在架"),

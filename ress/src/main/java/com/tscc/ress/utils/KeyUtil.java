@@ -18,4 +18,13 @@ public class KeyUtil {
 
         return System.currentTimeMillis() + String.valueOf(number);
     }
+
+    /**
+     * 每新增一个category自增1  理论上不会重复
+     */
+    public static synchronized Integer getCategoryId(){
+        Integer categoryId = 10086;
+        categoryId ++;
+        return categoryId;
+    }
 }

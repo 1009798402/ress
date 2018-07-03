@@ -28,4 +28,13 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo,String>
      * @return OrderDetail
      */
     ProductInfo findByProductId(String primaryId);
+
+    /**
+     * 根据商品状所属类型
+     *
+     * @param categoryType 所属类目
+     * @return List<ProductInfo>
+     */
+    List<ProductInfo> findByCategoryType(Integer categoryType);
+
 }

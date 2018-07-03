@@ -14,6 +14,7 @@ import java.util.List;
  * @date 17:05 2018/6/29/029
  */
 public interface ProductInfoService {
+
     /**
      * 查询一个商品
      *
@@ -59,4 +60,25 @@ public interface ProductInfoService {
      * @param cartDtoList  CartDto对象 包含要改变库存的商品以及它的数量
      */
     void decreaseProductDescription(List<CartDto> cartDtoList);
+
+    /**
+     * 商品上架
+     *
+     * @param productId 商品ID
+     */
+    void onSale(String productId);
+
+    /**
+     * 商品下架
+     *
+     * @param productId 商品ID
+     */
+    void offSale(String productId);
+
+    /**
+     * 删除商品
+     *
+     * @param productId 商品ID
+     */
+    void delete(String productId);
 }

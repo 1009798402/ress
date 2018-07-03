@@ -16,6 +16,7 @@ import com.tscc.ress.utils.MathUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -53,6 +54,7 @@ public class PayServiceImpl implements PayService{
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public PayResponse notify(String notifyData) {
         //1. 验证签名
         //2. 支付的状态
@@ -82,6 +84,7 @@ public class PayServiceImpl implements PayService{
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public RefundResponse refund(OrderDto orderDto) {
         RefundRequest refundRequest = new RefundRequest();
         refundRequest.setOrderAmount(orderDto.getOrderAmount().doubleValue());
